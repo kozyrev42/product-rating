@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
 	<title>Рейтинг товаров</title>
 	<link rel="stylesheet" href="/css/styles.css">
 </head>
+
 <body>
 	<h1>Рейтинг товаров</h1>
 	<div>
@@ -23,8 +25,9 @@
 		<a href="/createfakes">Создать фейк-товары</a>
 	</div>
 
-	<br><hr><br>
-	
+	<br>
+	<hr><br>
+
 
 	<div>
 		<a href="">Рейтинг товаров по возрастанию</a>
@@ -38,25 +41,108 @@
 
 	<br><br>
 
+	<form>
+		<legend>Фильтрация по рейтингу</legend>
+		<label>
+			нижняя граница рейтинга
+			<input type="text" name="name">
+		</label>
+		<br>
+
+		<label>
+			верхгяя граница рейтинга
+			<input type="text" name="surname">
+		</label>
+		<br>
+		<button>Показать</button>
+	</form>
+
+	<br><br>
+
 	<table class="table">
 		<thead>
 			<tr>
 				<th>Наименование</th>
 				<th>Рейтинг</th>
-				<th class="review">Отзывы</th>
+				<th class="reviews">Отзывы</th>
 				<th>Оставить отзыв</th>
-				<th>Редактировать отзыв</th>
-				<th>Удалить отзыв</th>
+
 			</tr>
 		</thead>
 		<tbody>
+			<!-- строка -->
 			<tr>
 				<td>круг</td>
 				<td>3</td>
-				<td class="review">текст отзыва мммммммммммммм  мммммммммммм</td>
-				<td>оставить отзыв</td>
-				<td>редактировать отзыв</td>
-				<td>удалить отзыв</td>
+				<td class="reviews">
+
+					<div class="review-container">
+						<a href="">редактировать отзыв</a>
+						<a href="">удалить отзыв</a>
+						<div class="review-text">текст отзыва мммммммммммммм мммммммммммм ggggggggggggggg gggggggggg</div>
+					</div>
+
+					<div class="review-container">
+						<a href="">редактировать отзыв</a>
+						<a href="">удалить отзыв</a>
+						<div class="review-text">текст отзыва мммммммммммммм мммммммммммм</div>
+					</div>
+
+				</td>
+				<td>
+					<a href="/login">выполните вход, чтобы оставить отзыв</a>
+					<a href="/createreview">оставить отзыв</a>
+				</td>
+			</tr>
+
+			<!-- строка -->
+			<tr>
+				<td>круг</td>
+				<td>3</td>
+				<td class="review">
+
+					<div class="review-container">
+						<a href="">редактировать отзыв</a>
+						<a href="">удалить отзыв</a>
+						<div class="review-text">текст отзыва мммммммммммммм мммммммммммм</div>
+					</div>
+
+					<div class="review-container">
+						<a href="">редактировать отзыв</a>
+						<a href="">удалить отзыв</a>
+						<div class="review-text">текст отзыва мммммммммммммм мммммммммммм</div>
+					</div>
+
+				</td>
+				<td>
+					<a href="">выполните вход, чтобы оставить отзыв</a>
+					<a href="">оставить отзыв</a>
+				</td>
+			</tr>
+
+			<!-- строка -->
+			<tr>
+				<td>круг</td>
+				<td>3</td>
+				<td class="review">
+
+					<div class="review-container">
+						<a href="">редактировать отзыв</a>
+						<a href="">удалить отзыв</a>
+						<div class="review-text">текст отзыва мммммммммммммм мммммммммммм</div>
+					</div>
+
+					<div class="review-container">
+						<a href="">редактировать отзыв</a>
+						<a href="">удалить отзыв</a>
+						<div class="review-text">текст отзыва мммммммммммммм мммммммммммм</div>
+					</div>
+
+				</td>
+				<td>
+					<a href="">выполните вход, чтобы оставить отзыв</a>
+					<a href="">оставить отзыв</a>
+				</td>
 			</tr>
 		</tbody>
 	</table>
@@ -65,4 +151,5 @@
 
 
 </body>
+
 </html>
