@@ -41,21 +41,25 @@
 
 	<br><br>
 
-	<form>
+	<form action="/" method="POST">
+		@csrf
 		<legend>Фильтрация по рейтингу</legend>
 		<label>
 			нижняя граница рейтинга
-			<input type="text" name="name">
+			<input type="text" name="lowlimit">
 		</label>
 		<br>
 
 		<label>
 			верхгяя граница рейтинга
-			<input type="text" name="surname">
+			<input type="text" name="upperlimit">
 		</label>
 		<br>
-		<button>Показать</button>
+		<button type="submit">Фильтровать</button>
 	</form>
+
+	<p>нижняя граница: {{ $lowlimit }}</p>
+	<p>верхгяя граница: {{ $upperlimit }}</p>
 
 	<br><br>
 
@@ -69,85 +73,49 @@
 
 			</tr>
 		</thead>
-		<tbody>
-			<!-- строка -->
-			<tr>
-				<td>круг</td>
-				<td>3</td>
-				<td class="reviews">
 
-					<div class="review-container">
-						<a href="">редактировать отзыв</a>
-						<a href="">удалить отзыв</a>
-						<div class="review-text">текст отзыва мммммммммммммм мммммммммммм ggggggggggggggg gggggggggg</div>
-					</div>
+		{{-- @php
+			dd($data);
+		@endphp --}}
 
-					<div class="review-container">
-						<a href="">редактировать отзыв</a>
-						<a href="">удалить отзыв</a>
-						<div class="review-text">текст отзыва мммммммммммммм мммммммммммм</div>
-					</div>
+		{{-- @if ($data) --}}
+			<tbody>
+				@foreach ($data as $elem)
+					<tr>
+						<td>{{ $elem['name'] }}</td>
+						<td>{{ $elem['rating'] }}</td>
+						<td class="reviews">
 
-				</td>
-				<td>
-					<a href="/login">выполните вход, чтобы оставить отзыв</a>
-					<a href="/createreview">оставить отзыв</a>
-				</td>
-			</tr>
+							{{-- если отзыв содержит массив, для каждого отзыва выводим контейнер --}}
+							@if (is_array($elem['revies']))
+								
+									@foreach ($elem['revies'] as $el)
+										<div class="review-container">
+											<a href="">редактировать отзыв</a>
+											<a href="">удалить отзыв</a>
+											<div class="review-text">{{ $el }}</div>
+										</div>
+									@endforeach
+								
+							{{-- иначе просто выводится отзыв --}}
+							@else
+								<div class="review-container">
+									<a href="">редактировать отзыв</a>
+									<a href="">удалить отзыв</a>
+									<div class="review-text">{{ $elem['revies'] }}</div>
+								</div>
+							@endif
 
-			<!-- строка -->
-			<tr>
-				<td>круг</td>
-				<td>3</td>
-				<td class="review">
-
-					<div class="review-container">
-						<a href="">редактировать отзыв</a>
-						<a href="">удалить отзыв</a>
-						<div class="review-text">текст отзыва мммммммммммммм мммммммммммм</div>
-					</div>
-
-					<div class="review-container">
-						<a href="">редактировать отзыв</a>
-						<a href="">удалить отзыв</a>
-						<div class="review-text">текст отзыва мммммммммммммм мммммммммммм</div>
-					</div>
-
-				</td>
-				<td>
-					<a href="">выполните вход, чтобы оставить отзыв</a>
-					<a href="">оставить отзыв</a>
-				</td>
-			</tr>
-
-			<!-- строка -->
-			<tr>
-				<td>круг</td>
-				<td>3</td>
-				<td class="review">
-
-					<div class="review-container">
-						<a href="">редактировать отзыв</a>
-						<a href="">удалить отзыв</a>
-						<div class="review-text">текст отзыва мммммммммммммм мммммммммммм</div>
-					</div>
-
-					<div class="review-container">
-						<a href="">редактировать отзыв</a>
-						<a href="">удалить отзыв</a>
-						<div class="review-text">текст отзыва мммммммммммммм мммммммммммм</div>
-					</div>
-
-				</td>
-				<td>
-					<a href="">выполните вход, чтобы оставить отзыв</a>
-					<a href="">оставить отзыв</a>
-				</td>
-			</tr>
-		</tbody>
+						</td>
+						<td>
+							<a href="/login">выполните вход, чтобы оставить отзыв</a>
+							<a href="/createreview">оставить отзыв</a>
+						</td>
+					</tr>
+				@endforeach
+			</tbody>
+		{{-- @endif	 --}}
 	</table>
-
-
 
 
 </body>

@@ -26,6 +26,8 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', [HomeController::class, 'index']);
 
+Route::post('/', [HomeController::class, 'formHandler']);
+
 Route::get('/createreview', [CreateReviewController::class, 'show']);
 
 Route::get('/editreview', [EditReviewController::class, 'show']);
@@ -35,3 +37,5 @@ Route::get('/createfakes', [CreateFakesController::class, 'show']);
 Route::get('/registration', [RegistrationController::class, 'show']);
 
 Route::get('/login', [LoginController::class, 'show']);
+
+
