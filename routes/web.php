@@ -6,8 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CreateReviewController;
 use App\Http\Controllers\EditReviewController;
 use App\Http\Controllers\CreateFakesController;
-use App\Http\Controllers\RegistrationController;
-use App\Http\Controllers\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +18,6 @@ use App\Http\Controllers\LoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -38,4 +33,7 @@ Route::get('/registration', [RegistrationController::class, 'show']);
 
 Route::get('/login', [LoginController::class, 'show']);
 
+Auth::routes();
 
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', function () {return redirect('/');});

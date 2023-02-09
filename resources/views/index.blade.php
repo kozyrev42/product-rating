@@ -5,21 +5,39 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>Рейтинг товаров</title>
 	<link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
 	<h1>Рейтинг товаров</h1>
-	<div>
-		<a href="/registration">Регистрация</a>
-	</div>
-	<div>
-		<a href="/login">Вход</a>
-	</div>
-	<div>
-		<a href="">Выйти</a>
-	</div>
+
+	@if (Auth::check())
+		<p>Пользователь: {{ Auth::user()->name }}</p>
+	@else 
+		<p>Пользователь: не авторизован</p>
+	@endif
+
+	@if (!Auth::check())
+			<div>
+				<a href="/register">Регистрация</a>
+			</div>
+			<div>
+				<a href="/login">Вход</a>
+			</div>
+	@endif
+
+	@if (Auth::check())
+		<div>
+			<a href="{{ route('logout') }}" onclick="event.preventDefault();
+			document.getElementById('logout-form').submit();">Выйти</a>
+		</div>
+		<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+			@csrf
+		</form>
+	@endif
+
 	<br>
 	<div>
 		<a href="/createfakes">Создать фейк-товары</a>
@@ -30,7 +48,7 @@
 
 
 	<div>
-		<a href="">Рейтинг товаров по возрастанию</a>
+		<a href="/#">Рейтинг товаров по возрастанию</a>
 	</div>
 	<div>
 		<a href="">Рейтинг товаров по убыванию</a>
