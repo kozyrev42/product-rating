@@ -28,6 +28,7 @@ Route::get('/createreview', [CreateReviewController::class, 'show']);
 Route::get('/editreview', [EditReviewController::class, 'show']);
 
 Route::get('/createfakes', [CreateFakesController::class, 'show']);
+Route::get('/factory', [CreateFakesController::class, 'factory']);
 
 Route::get('/registration', [RegistrationController::class, 'show']);
 
