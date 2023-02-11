@@ -54,6 +54,7 @@
 		<a href="">Рейтинг товаров по убыванию</a>
 	</div>
 	<div>
+		{{-- если id авторизованного === id создателя отзыва на товар => выводими товар --}}
 		<a href="">Товары с моими отзывами</a>
 	</div>
 
@@ -98,14 +99,28 @@
 
 		{{-- @if ($data) --}}
 			<tbody>
-				@foreach ($data as $elem)
+				@foreach ($products as $product)
 					<tr>
-						<td>{{ $elem['name'] }}</td>
-						<td>{{ $elem['rating'] }}</td>
+						<td>{{ $product->name_product}}</td>
+						<td>0</td>
 						<td class="reviews">
 
+							<div class="review-container">
+								
+								{{-- если id авторизованного === id создателя --}}
+								<a href="">редактировать отзыв</a>
+								<a href="">удалить отзыв</a>
+
+								<div class="review-text">текст отзыва</div>
+							</div>
+
+							<div class="review-container">
+								<a href="">редактировать отзыв</a>
+								<a href="">удалить отзыв</a>
+								<div class="review-text">текст отзыва</div>
+							</div>
 							{{-- если отзыв содержит массив, для каждого отзыва выводим контейнер --}}
-							@if (is_array($elem['revies']))
+							{{-- @if (is_array($elem['revies']))
 								
 									@foreach ($elem['revies'] as $el)
 										<div class="review-container">
@@ -116,18 +131,15 @@
 									@endforeach
 								
 							{{-- иначе просто выводится отзыв --}}
-							@else
-								<div class="review-container">
-									<a href="">редактировать отзыв</a>
-									<a href="">удалить отзыв</a>
-									<div class="review-text">{{ $elem['revies'] }}</div>
-								</div>
-							@endif
-
 						</td>
 						<td>
-							<a href="/login">выполните вход, чтобы оставить отзыв</a>
-							<a href="/createreview">оставить отзыв</a>
+							{{-- <a href="/login">выполните вход, чтобы оставить отзыв</a>
+							<a href="/createreview">оставить отзыв</a> --}}
+							@if (Auth::check())
+								<a href="/createreviewshow/{{$product->id}}">оставить отзыв</a>
+							@else
+								<a href="/login">выполните вход, чтобы оставить отзыв</a>
+							@endif
 						</td>
 					</tr>
 				@endforeach

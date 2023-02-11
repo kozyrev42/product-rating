@@ -23,7 +23,8 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::post('/', [HomeController::class, 'formHandler']);
 
-Route::get('/createreview', [CreateReviewController::class, 'show']);
+Route::get('/createreviewshow/{id}', [CreateReviewController::class, 'show']);
+Route::post('/create_review', [CreateReviewController::class, 'createReview']);
 
 Route::get('/editreview', [EditReviewController::class, 'show']);
 
