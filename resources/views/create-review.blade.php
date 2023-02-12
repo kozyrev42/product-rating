@@ -15,7 +15,7 @@
 		
 		<input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
 		<input type="hidden" name="id_product" value="{{$product->id}}">
-		<textarea name="comment" cols="70" rows="10"></textarea>
+		<textarea name="text_review" cols="70" rows="10"></textarea>
 		
 		<br><br>
 

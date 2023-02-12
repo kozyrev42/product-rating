@@ -24,15 +24,15 @@
 		public function createReview(Request $request)
 		{
 			$id_user = $request->id_user;
-			$id_product = $request->id_product;
-			$comment = $request->comment;
+			$product_id = $request->id_product;
+			$text_review = $request->text_review;
 			$rating = $request->rating;
 
 			$review = new Review;
 			
-			$review->id_product = $id_product;
+			$review->product_id = $product_id;
 			$review->id_user = $id_user;
-			$review->review = $comment;
+			$review->review = $text_review;
 			$review->rating = $rating;
 
 			$review->save();

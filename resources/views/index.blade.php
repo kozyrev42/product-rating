@@ -102,39 +102,41 @@
 				@foreach ($products as $product)
 					<tr>
 						<td>{{ $product->name_product}}</td>
-						<td>0</td>
+
+						{{-- средний рейтинг --}}
+						{{-- @foreach ($product->reviews as $review) --}}
+							<td>0</td>
+						{{-- @endforeach --}}
+
 						<td class="reviews">
 
-							<div class="review-container">
-								
-								{{-- если id авторизованного === id создателя --}}
-								<a href="">редактировать отзыв</a>
-								<a href="">удалить отзыв</a>
+							@if ($product->reviews)
+								@foreach ($product->reviews as $review)
 
-								<div class="review-text">текст отзыва</div>
-							</div>
+									<div class="review-container">
 
-							<div class="review-container">
-								<a href="">редактировать отзыв</a>
-								<a href="">удалить отзыв</a>
-								<div class="review-text">текст отзыва</div>
-							</div>
-							{{-- если отзыв содержит массив, для каждого отзыва выводим контейнер --}}
-							{{-- @if (is_array($elem['revies']))
-								
-									@foreach ($elem['revies'] as $el)
-										<div class="review-container">
-											<a href="">редактировать отзыв</a>
-											<a href="">удалить отзыв</a>
-											<div class="review-text">{{ $el }}</div>
-										</div>
-									@endforeach
-								
-							{{-- иначе просто выводится отзыв --}}
+										@if (Auth::user()->id === $review->id_user)
+											<form id="editreview" action="/editreview" method="POST">
+												@csrf
+												<input type="hidden" name="product_id" value="{{ $review->product_id }}">
+												<input type="hidden" name="review_id" value="{{ $review->id }}">
+												<input type="hidden" name="text_review" value="{{ $review->review }}">
+												<input type="hidden" name="rating" value="{{ $review->rating }}">
+												<button type="submit">редактировать / удалить</button>
+											</form>
+										@endif
+
+										<div class="review-text"><b>{{$review->review}}</b></div>
+										<div class="review-text">оценка: {{$review->rating}}</div>
+									</div>								
+									
+								@endforeach 		
+							@else
+								отзывов нет
+							@endif
+							
 						</td>
 						<td>
-							{{-- <a href="/login">выполните вход, чтобы оставить отзыв</a>
-							<a href="/createreview">оставить отзыв</a> --}}
 							@if (Auth::check())
 								<a href="/createreviewshow/{{$product->id}}">оставить отзыв</a>
 							@else

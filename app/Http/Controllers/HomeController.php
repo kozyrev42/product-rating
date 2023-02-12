@@ -11,6 +11,14 @@
 		{
 			$products = Product::all();
 
+			// foreach ($products as $product) {
+			// вытягиваем отзывы каждого объекта
+			// 	foreach ($product->reviews as $review) {
+			// 		dump($review->review);
+			// 	}
+			// }
+
+
 			$lowlimit = 'пусто';
 			$upperlimit  = 'пусто';
 

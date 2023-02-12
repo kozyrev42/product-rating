@@ -26,7 +26,9 @@ Route::post('/', [HomeController::class, 'formHandler']);
 Route::get('/createreviewshow/{id}', [CreateReviewController::class, 'show']);
 Route::post('/create_review', [CreateReviewController::class, 'createReview']);
 
-Route::get('/editreview', [EditReviewController::class, 'show']);
+Route::post('/editreview', [EditReviewController::class, 'show']);
+Route::post('/editreviewexec', [EditReviewController::class, 'exec']);
+Route::post('/deletereview', [EditReviewController::class, 'delete']);
 
 Route::get('/createfakes', [CreateFakesController::class, 'show']);
 Route::get('/factory', [CreateFakesController::class, 'factory']);
