@@ -7,25 +7,16 @@
 	class HomeController extends Controller
 	{
 
+		// страница по умолчанию
 		public function index()
 		{
 			$products = Product::all();
-
-			// foreach ($products as $product) {
-			// вытягиваем отзывы каждого объекта
-			// 	foreach ($product->reviews as $review) {
-			// 		dump($review->review);
-			// 	}
-			// }
-
 
 			$lowlimit = 'пусто';
 			$upperlimit  = 'пусто';
 
 			return view('index', [
-				
 				'products' => $products, 'lowlimit' => $lowlimit, 'upperlimit' => $upperlimit
-	
 			]);
 		}
 
@@ -51,8 +42,5 @@
 			return view('index', [
 				'lowlimit' => $lowlimit, 'upperlimit' => $upperlimit, 'data' => $arr
 			]);
-
 		}
-
-
 	}

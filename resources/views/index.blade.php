@@ -104,9 +104,9 @@
 						<td>{{ $product->name_product}}</td>
 
 						{{-- средний рейтинг --}}
-						{{-- @foreach ($product->reviews as $review) --}}
-							<td>0</td>
-						{{-- @endforeach --}}
+						<td>{{ 
+							$product->averageRating()
+						}}</td>
 
 						<td class="reviews">
 

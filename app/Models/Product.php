@@ -17,4 +17,9 @@ class Product extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function averageRating()
+    {
+        return $this->hasOne(Review::class)->avg('rating');
+    }
 }
