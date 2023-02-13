@@ -44,42 +44,7 @@
 	</div>
 
 	<br>
-	<hr><br>
-
-
-	<div>
-		<a href="/#">Рейтинг товаров по возрастанию</a>
-	</div>
-	<div>
-		<a href="">Рейтинг товаров по убыванию</a>
-	</div>
-	<div>
-		{{-- если id авторизованного === id создателя отзыва на товар => выводими товар --}}
-		<a href="">Товары с моими отзывами</a>
-	</div>
-
-	<br><br>
-
-	<form action="/" method="POST">
-		@csrf
-		<legend>Фильтрация по рейтингу</legend>
-		<label>
-			нижняя граница рейтинга
-			<input type="text" name="lowlimit">
-		</label>
-		<br>
-
-		<label>
-			верхгяя граница рейтинга
-			<input type="text" name="upperlimit">
-		</label>
-		<br>
-		<button type="submit">Фильтровать</button>
-	</form>
-
-	<p>нижняя граница: {{ $lowlimit }}</p>
-	<p>верхгяя граница: {{ $upperlimit }}</p>
-
+	<hr>
 	<br><br>
 
 	<table class="table">
@@ -92,29 +57,22 @@
 
 			</tr>
 		</thead>
+		<tbody>
+			@foreach ($products as $product)
+				<tr>
+					{{-- колонка наименование --}}
+					<td>{{ $product->name_product}}</td>
 
-		{{-- @php
-			dd($data);
-		@endphp --}}
+					{{-- средний рейтинг --}}
+					<td>{{ $product->averageRating()}}</td>
 
-		{{-- @if ($data) --}}
-			<tbody>
-				@foreach ($products as $product)
-					<tr>
-						<td>{{ $product->name_product}}</td>
+					{{-- отзывы --}}
+					<td class="reviews">
 
-						{{-- средний рейтинг --}}
-						<td>{{ 
-							$product->averageRating()
-						}}</td>
-
-						<td class="reviews">
-
-							@if ($product->reviews)
-								@foreach ($product->reviews as $review)
-
-									<div class="review-container">
-
+						@if ($product->reviews)
+							@foreach ($product->reviews as $review)
+								<div class="review-container">
+									@if (Auth::check())
 										@if (Auth::user()->id === $review->id_user)
 											<form id="editreview" action="/editreview" method="POST">
 												@csrf
@@ -125,28 +83,27 @@
 												<button type="submit">редактировать / удалить</button>
 											</form>
 										@endif
+									@endif
+									<div class="review-text"><b>{{$review->review}}</b></div>
+									<div class="review-text">оценка: {{$review->rating}}</div>
+								</div>								
+							@endforeach 		
+						@else
+							отзывов нет
+						@endif
+					</td>
 
-										<div class="review-text"><b>{{$review->review}}</b></div>
-										<div class="review-text">оценка: {{$review->rating}}</div>
-									</div>								
-									
-								@endforeach 		
-							@else
-								отзывов нет
-							@endif
-							
-						</td>
-						<td>
-							@if (Auth::check())
-								<a href="/createreviewshow/{{$product->id}}">оставить отзыв</a>
-							@else
-								<a href="/login">выполните вход, чтобы оставить отзыв</a>
-							@endif
-						</td>
-					</tr>
-				@endforeach
-			</tbody>
-		{{-- @endif	 --}}
+					{{-- оставить отзыв --}}
+					<td>
+						@if (Auth::check())
+							<a href="/createreviewshow/{{$product->id}}">оставить отзыв</a>
+						@else
+							<a href="/login">выполните вход, чтобы оставить отзыв</a>
+						@endif
+					</td>
+				</tr>
+			@endforeach
+		</tbody>
 	</table>
 
 

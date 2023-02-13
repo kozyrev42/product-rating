@@ -21,8 +21,6 @@ use App\Http\Controllers\CreateFakesController;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::post('/', [HomeController::class, 'formHandler']);
-
 Route::get('/createreviewshow/{id}', [CreateReviewController::class, 'show']);
 Route::post('/create_review', [CreateReviewController::class, 'createReview']);
 
@@ -39,5 +37,4 @@ Route::get('/login', [LoginController::class, 'show']);
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', function () {return redirect('/');});

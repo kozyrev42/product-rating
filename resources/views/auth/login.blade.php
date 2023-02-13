@@ -19,7 +19,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Вход') }}</div>
-
+                <br>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -37,7 +37,8 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <br>
+                        
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Пароль') }}</label>
 
@@ -63,7 +64,7 @@
                                 </div>
                             </div>
                         </div> --}}
-
+                        <br>
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
