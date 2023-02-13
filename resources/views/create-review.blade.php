@@ -28,7 +28,7 @@
 		</div>
 
 		<br>
-		<button type="submit">Отправить отзыв</button>
+		<button class="but-edit" type="submit">Отправить отзыв</button>
 	</form>
 
 </body>

@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>Страница редактирования отзыва</title>
+		<link rel="stylesheet" href="/css/styles.css">
 	</head>
 	<body>
 		
@@ -28,14 +29,14 @@
 			</div>
 
 			<br>
-			<button type="submit">Редактировать отзыв</button>
+			<button class="but-edit" type="submit">Редактировать отзыв</button>
 		</form>
 		<br>
 
 		<form action="/deletereview" method="POST">
 			@csrf
 			<input type="hidden" name="review_id" value="{{$review_id}}">
-			<button type="submit">Удалить отзыв</button>
+			<button class="but-del" type="submit">Удалить отзыв</button>
 		</form>
 
 	</body>

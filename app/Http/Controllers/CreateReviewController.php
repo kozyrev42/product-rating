@@ -40,7 +40,10 @@
 
 			$result = $review->save();
 
-			// при успешной записи данных в базу, записываем в Лог
+			//  при успешной записи данных в базу, записываем в Лог
+			//  php artisan queue:work  // запуск очереди
+			//  php artisan queue:work --stop-when-empty
+			//  остановка очереди: Ctrl+C
 			if ($result) {
 				$data = 'Данные отзыва: id товара: ' . $product_id . '| id юзера: '. $id_user . '| текст: ' . $text_review . '| оценка: ' . $rating;
 				ProcessRecordingReview::dispatch($data);

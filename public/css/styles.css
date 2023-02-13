@@ -51,3 +51,76 @@ a {
 .input-review {
 	height: 40px;
 }
+
+.but-exit a {
+	
+	width: 50px;
+	padding: 5px 24px;
+	border: none;
+	border-radius: 7px;
+	font-weight: bold;
+	background: rgb(66, 11, 92);
+	cursor: pointer;
+	color: white;
+	text-decoration: none;
+}
+
+.but-fakes a {
+	width: 100px;
+	padding: 5px 24px;
+	border: none;
+	border-radius: 7px;
+	font-weight: bold;
+	background: rgb(212,75,56);
+	cursor: pointer;
+	color: white;
+	text-decoration: none;
+}
+
+.but-reg a {
+	width: 100px;
+	padding: 5px 24px;
+	border: none;
+	border-radius: 7px;
+	font-weight: bold;
+	background: rgb(22, 67, 230);
+	cursor: pointer;
+	color: white;
+	text-decoration: none;
+}
+
+.but-in a {
+	width: 100px;
+	padding: 5px 24px;
+	border: none;
+	border-radius: 7px;
+	font-weight: bold;
+	background: #10ad42;
+	cursor: pointer;
+	color: white;
+	text-decoration: none;
+}
+
+.but-edit {
+	width: 150px;
+	padding: 5px 24px;
+	border: none;
+	border-radius: 7px;
+	font-weight: bold;
+	background: #10ad42;
+	cursor: pointer;
+	color: white;
+	text-decoration: none;
+}
+
+.but-del {
+	width: 150px;
+	padding: 5px 24px;
+	border: none;
+	border-radius: 7px;
+	font-weight: bold;
+	background: rgb(212,75,56);
+	cursor: pointer;
+	color: white;
+	text-decoration: none;
+}

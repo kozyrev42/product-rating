@@ -20,16 +20,17 @@
 	@endif
 
 	@if (!Auth::check())
-			<div>
+			<div class='but-reg'>
 				<a href="/register">Регистрация</a>
 			</div>
-			<div>
+			<br>
+			<div class='but-in'>
 				<a href="/login">Вход</a>
 			</div>
 	@endif
 
 	@if (Auth::check())
-		<div>
+		<div class='but-exit'>
 			<a href="{{ route('logout') }}" onclick="event.preventDefault();
 			document.getElementById('logout-form').submit();">Выйти</a>
 		</div>
@@ -39,7 +40,7 @@
 	@endif
 
 	<br>
-	<div>
+	<div class='but-fakes'>
 		<a href="/createfakes">Создать фейк-товары</a>
 	</div>
 
@@ -80,7 +81,7 @@
 												<input type="hidden" name="review_id" value="{{ $review->id }}">
 												<input type="hidden" name="text_review" value="{{ $review->review }}">
 												<input type="hidden" name="rating" value="{{ $review->rating }}">
-												<button type="submit">редактировать / удалить</button>
+												<button class="but-edit"  type="submit">редактировать / удалить</button>
 											</form>
 										@endif
 									@endif
@@ -94,7 +95,7 @@
 					</td>
 
 					{{-- оставить отзыв --}}
-					<td>
+					<td class='but-fakes'>
 						@if (Auth::check())
 							<a href="/createreviewshow/{{$product->id}}">оставить отзыв</a>
 						@else
