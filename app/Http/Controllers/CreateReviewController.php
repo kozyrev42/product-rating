@@ -6,6 +6,9 @@
 	use App\Models\Product;
 	use App\Models\Review;
 
+	use App\Jobs\ProcessRecordingReview;
+
+
 	class CreateReviewController extends Controller
 	{
 		public function show(Request $request)
@@ -35,8 +38,14 @@
 			$review->review = $text_review;
 			$review->rating = $rating;
 
-			$review->save();
+			$result = $review->save();
 
+			// при успешной записи данных в базу, записываем в Лог
+			if ($result) {
+				$data = 'Данные отзыва: id товара: ' . $product_id . '| id юзера: '. $id_user . '| текст: ' . $text_review . '| оценка: ' . $rating;
+				ProcessRecordingReview::dispatch($data);
+			}
+			
 			return redirect('/');
 		}		
 	}
